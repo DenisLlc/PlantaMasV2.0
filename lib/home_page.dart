@@ -6,24 +6,24 @@ import 'currentWeather.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//         visualDensity: VisualDensity.adaptivePlatformDensity,
+//       ),
+//       home: MyHomePage(),
+//     );
+//   }
+// }
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -108,32 +108,15 @@ class _MyHomePageState extends State<MyHomePage> {
       description: "description");
   @override
   Widget build(BuildContext context) {
-    List<dynamic> ulist = usuarios;
+    // List<dynamic> ulist = usuarios;
     final Size size = MediaQuery.of(context).size;
     final double categoryHeight = size.height * 0.30;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: Icon(
-            Icons.menu,
-            color: Colors.black,
-          ),
-          /*actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search, color: Colors.black),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.person, color: Colors.black),
-              onPressed: () {},
-            )
-          ],*/
-        ),
         body: Container(
           height: size.height,
+          padding: EdgeInsets.only(top: 20),
           child: Column(
             children: <Widget>[
               Row(

@@ -21,28 +21,29 @@ class _BNavigatorState extends State<BNavigator> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        iconSize: 25.0,
-        selectedFontSize: 14.0,
-        unselectedFontSize: 12.0,
+        iconSize: 30.0,
+        selectedFontSize: 0.0,
+        unselectedFontSize: 0.0,
+        selectedItemColor: Colors.green,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home_rounded),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.heart_broken),
+            icon: Icon(Icons.favorite_rounded),
             label: 'MyGarden',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search_rounded),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
+            icon: Icon(Icons.chat_rounded),
             label: 'Chat',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.note),
+            icon: Icon(Icons.my_library_books_outlined),
             label: 'Notes',
           ),
         ]);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plantamas/appBar/app_Bar.dart';
 import 'package:plantamas/bottomNavigation/bottom_nav.dart';
 import 'package:plantamas/bottomNavigation/routes.dart';
 import 'package:plantamas/plantaMas/generatedHomeWidget/generatedHomeWidget.dart';
@@ -54,8 +55,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: myBNB,
-      body: Routes(index: index),
-    );
+        bottomNavigationBar: myBNB,
+        body: Routes(index: index),
+        appBar: AppBarPage());
   }
 }
