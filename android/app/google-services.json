@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "627740021508",
+    "project_id": "plantamas",
+    "storage_bucket": "plantamas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627740021508:android:983dba0cfe5fa68cf27651",
+        "android_client_info": {
+          "package_name": "com.example.plantamas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627740021508-dd82s788gdtru1cf6akqfi62dbku9t4p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtTw8YNh8EB8CWKFGmm3RTqzchr0SqZGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627740021508-dd82s788gdtru1cf6akqfi62dbku9t4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

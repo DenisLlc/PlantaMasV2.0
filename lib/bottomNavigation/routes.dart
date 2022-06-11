@@ -14,7 +14,7 @@ class Routes extends StatelessWidget {
     List<Widget> myList = [
       MyHomePage(),
       const Page2(),
-      const Page3(),
+      Page3(),
       const Page4(),
       const Page5()
     ];
