@@ -9,12 +9,7 @@ class CurrentWeatherPage extends StatefulWidget {
 }
 
 class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
-  Weather _weather = Weather(
-      temp: 0.0,
-      feelsLike: 0.0,
-      low: 0.0,
-      high: 0.0,
-      description: "description");
+  Weather? _weather;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +18,11 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
       child: FutureBuilder(
         builder: (context, snapshot) {
           if (snapshot != null) {
-            this._weather = snapshot.data as Weather;
+            this._weather = snapshot.data as Weather?;
             if (this._weather == null) {
-              return Text("Error getting weather");
+              return Text("Error");
             } else {
-              return weatherBox(_weather);
+              return weatherBox(_weather!);
             }
           } else {
             return CircularProgressIndicator();
@@ -61,12 +56,7 @@ Widget weatherBox(Weather _weather) {
 }
 
 Future getCurrentWeather() async {
-  Weather weather = Weather(
-      temp: 0.0,
-      feelsLike: 0.0,
-      low: 0.0,
-      high: 0.0,
-      description: "description");
+  Weather? weather;
   String city = "arequipa";
   String apiKey = "02fbb4c6c466fc1d6cae9014bbe570db";
   var url =

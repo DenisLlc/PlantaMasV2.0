@@ -1,29 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'currentWeather.dart';
 import 'constants.dart';
 import 'weather.dart';
-import 'currentWeather.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-// void main() {
-//   runApp(MyApp());
-// }
+void main() {
+  runApp(MyApp());
+}
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//         visualDensity: VisualDensity.adaptivePlatformDensity,
-//       ),
-//       home: MyHomePage(),
-//     );
-//   }
-// }
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -100,23 +100,35 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Weather _weather = Weather(
-      temp: 0.0,
-      feelsLike: 0.0,
-      low: 0.0,
-      high: 0.0,
-      description: "description");
+  Weather? _weather;
   @override
   Widget build(BuildContext context) {
-    // List<dynamic> ulist = usuarios;
+    List<dynamic> ulist = usuarios;
     final Size size = MediaQuery.of(context).size;
     final double categoryHeight = size.height * 0.30;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          leading: Icon(
+            Icons.menu,
+            color: Colors.black,
+          ),
+          /*actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search, color: Colors.black),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.person, color: Colors.black),
+              onPressed: () {},
+            )
+          ],*/
+        ),
         body: Container(
           height: size.height,
-          padding: EdgeInsets.only(top: 20),
           child: Column(
             children: <Widget>[
               Row(
@@ -145,11 +157,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Text(
-                    "Clima actual \n",
+                    "Clima actual",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20),
+                        fontSize: 15),
                   ),
                   //weatherBox(_weather)
                 ],
@@ -157,12 +169,11 @@ class _MyHomePageState extends State<MyHomePage> {
               FutureBuilder(
                 builder: (context, snapshot) {
                   if (snapshot != null) {
-                    this._weather = snapshot.data as Weather;
-                    ;
+                    this._weather = snapshot.data as Weather?;
                     if (this._weather == null) {
-                      return Text("Error getting weather");
+                      return Text("Loading...");
                     } else {
-                      return weatherBox(_weather);
+                      return weatherBox(_weather!);
                     }
                   } else {
                     return CircularProgressIndicator();
@@ -174,7 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Text(
-                    "\nHechos Interesantes \n",
+                    "\nHechos Interesantes",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -362,12 +373,7 @@ class CategoriesScroller extends StatelessWidget {
 }
 
 class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
-  Weather _weather = Weather(
-      temp: 0.0,
-      feelsLike: 0.0,
-      low: 0.0,
-      high: 0.0,
-      description: "description");
+  Weather? _weather;
 
   @override
   Widget build(BuildContext context) {
@@ -376,12 +382,11 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
       child: FutureBuilder(
         builder: (context, snapshot) {
           if (snapshot != null) {
-            this._weather = snapshot.data as Weather;
-            ;
+            this._weather = snapshot.data as Weather?;
             if (this._weather == null) {
               return Text("Error getting weather");
             } else {
-              return weatherBox(_weather);
+              return weatherBox(_weather!);
             }
           } else {
             return CircularProgressIndicator();
@@ -430,12 +435,7 @@ Widget weatherBox(Weather _weather) {
 }
 
 Future getCurrentWeather() async {
-  Weather weather = Weather(
-      temp: 0.0,
-      feelsLike: 0.0,
-      low: 0.0,
-      high: 0.0,
-      description: "description");
+  Weather? weather;
   String city = "arequipa";
   String apiKey = "02fbb4c6c466fc1d6cae9014bbe570db";
   var url =
