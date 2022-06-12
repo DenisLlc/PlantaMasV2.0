@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:plantamas/home_page.dart';
 import 'package:plantamas/page2.dart';
@@ -14,7 +15,7 @@ class Routes extends StatelessWidget {
     List<Widget> myList = [
       MyHomePage(),
       const Page2(),
-      Page3(),
+      Page3( ),
       const Page4(),
       const Page5()
     ];
