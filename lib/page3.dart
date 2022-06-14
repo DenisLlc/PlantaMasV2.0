@@ -27,7 +27,9 @@ class Page3 extends StatelessWidget {
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return Text('Conectando...');
+        return Center(
+            child: Text('Conectando...')
+        );
       },
     );
   }
@@ -46,7 +48,10 @@ class _Mypage3State extends State<MyPage3> with SingleTickerProviderStateMixin{
 
   final _textController = TextEditingController();
   late TabController _tabController;
-  late final allData;
+  dynamic allData;
+  dynamic allSmall;
+  dynamic allMedium;
+  dynamic allBig;
 
 
   void initState() {
@@ -83,7 +88,7 @@ class _Mypage3State extends State<MyPage3> with SingleTickerProviderStateMixin{
                   color: Colors.blue, // button color
                   child: InkWell(
                     splashColor: Colors.blue.shade50, // inkwell color
-                    child: SizedBox(width: 50, height: 50, child: Icon(Icons.search, color: Colors.white,)),
+                    child: const SizedBox(width: 50, height: 50, child: Icon(Icons.search, color: Colors.white,)),
                     onTap: () {},
                   ),
                 ),
@@ -100,16 +105,16 @@ class _Mypage3State extends State<MyPage3> with SingleTickerProviderStateMixin{
               isScrollable: true,
               indicatorColor: Colors.transparent,
               unselectedLabelColor: Colors.grey,
-              unselectedLabelStyle: TextStyle(
+              unselectedLabelStyle: const TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
                 fontWeight: FontWeight.w700,
               ),
-              labelStyle: TextStyle(
+              labelStyle: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
               ),
-              tabs: <Widget>[
+              tabs: const <Widget>[
                 Text('Pequeño'),
                 Text('Mediano'),
                 Text('Grande'),
@@ -120,16 +125,37 @@ class _Mypage3State extends State<MyPage3> with SingleTickerProviderStateMixin{
             child: TabBarView(
               controller: _tabController,
               children: <Widget>[
+                //Small tab
                 FutureBuilder(
                   future: getData('Pequeña'),
                   builder: (context, snapshot) {
                   // Check for errors
                     if (snapshot.hasError) {
-                      return Text("Algo salió mal, revise su conexión a internet");
+                      return const Text("Algo salió mal, revise su conexión a internet");
                     }
                     // Once complete, show your application
                     if (snapshot.connectionState == ConnectionState.done) {
-                      return Text(allData[0]['name'].toString());
+                      return ListView.builder(
+                        itemCount: allData.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Card(
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              margin: EdgeInsets.all(15),
+                              elevation: 10,
+                              child: Column(
+                                children: <Widget>[
+                                ListTile(
+                                  contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                                  title: Text(allSmall[0]['name'].toString()),
+                                  subtitle: Text(allSmall[0]['genre'].toString()),
+                                  leading: Icon(Icons.grass),
+                                ),
+                                ],
+                              ),
+                              ),);
+                        },
+                      );
                     }
                     // Otherwise, show something whilst waiting for initialization to complete
                       return Center(
@@ -140,17 +166,88 @@ class _Mypage3State extends State<MyPage3> with SingleTickerProviderStateMixin{
                       );
                   },
                 ),
-                const Center(
-                  child: Text(
-                    'KALTEGETRANKE',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
-                  ),
+                //Medium Plants
+                FutureBuilder(
+                  future: getData('Mediana'),
+                  builder: (context, snapshot) {
+                    // Check for errors
+                    if (snapshot.hasError) {
+                      return const Text("Algo salió mal, revise su conexión a internet");
+                    }
+                    // Once complete, show your application
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return ListView.builder(
+                        itemCount: allData.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Card(
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              margin: EdgeInsets.all(15),
+                              elevation: 10,
+                              child: Column(
+                                children: <Widget>[
+                                  ListTile(
+                                    contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                                    title: Text(allMedium[0]['name'].toString()),
+                                    subtitle: Text(allMedium[0]['genre'].toString()),
+                                    leading: Icon(Icons.grass),
+                                  ),
+                                ],
+                              ),
+                            ),);
+                        },
+                      );
+                    }
+                    // Otherwise, show something whilst waiting for initialization to complete
+                    return Center(
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: Colors.blue,
+                          size: 150,
+                        )
+                    );
+                  },
                 ),
-                const Center(
-                  child: Text(
-                    'HEIBGETRANKE',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
-                  ),
+
+                //Big Plants
+                FutureBuilder(
+                  future: getData('Grande'),
+                  builder: (context, snapshot) {
+                    // Check for errors
+                    if (snapshot.hasError) {
+                      return const Text("Algo salió mal, revise su conexión a internet");
+                    }
+                    // Once complete, show your application
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return ListView.builder(
+                        itemCount: allData.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Card(
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              margin: EdgeInsets.all(15),
+                              elevation: 10,
+                              child: Column(
+                                children: <Widget>[
+                                  ListTile(
+                                    contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                                    title: Text(allBig[0]['name'].toString()),
+                                    subtitle: Text(allBig[0]['genre'].toString()),
+                                    leading: Icon(Icons.grass),
+                                  ),
+                                ],
+                              ),
+                            ),);
+                        },
+                      );
+                    }
+                    // Otherwise, show something whilst waiting for initialization to complete
+                    return Center(
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: Colors.blue,
+                          size: 150,
+                        )
+                    );
+                  },
                 ),
               ],
             ),
@@ -172,6 +269,17 @@ class _Mypage3State extends State<MyPage3> with SingleTickerProviderStateMixin{
 
     // Get data from docs and convert map to List
     allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+
+    if(size == 'Pequeña'){
+      allSmall = querySnapshot.docs.map((doc) => doc.data()).toList();
+    }
+    if(size == 'Mediana'){
+      allMedium = querySnapshot.docs.map((doc) => doc.data()).toList();
+    }
+    if(size == 'Grande'){
+      allBig = querySnapshot.docs.map((doc) => doc.data()).toList();
+    }
+
     print(allData);
   }
 }
