@@ -109,24 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: Icon(
-            Icons.menu,
-            color: Colors.black,
-          ),
-          /*actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search, color: Colors.black),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.person, color: Colors.black),
-              onPressed: () {},
-            )
-          ],*/
-        ),
         body: Container(
           height: size.height,
           child: Column(
@@ -135,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Text(
-                    "Hola, tus plantas te extrañan!",
+                    "\nHola, tus plantas te extrañan!",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,

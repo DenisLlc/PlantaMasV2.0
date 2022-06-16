@@ -27,8 +27,10 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+
   flutter:
     sdk: flutter
+    
 
 
 
@@ -39,6 +41,8 @@ dependencies:
   firebase_core:
   cloud_firestore:
   loading_animation_widget:
+  sqflite: any
+  path_provider: any
 
 dev_dependencies:
   flutter_test:

@@ -6,6 +6,8 @@ import 'package:plantamas/page3.dart';
 import 'package:plantamas/page4.dart';
 import 'package:plantamas/page5.dart';
 
+import 'package:plantamas/page_addPlants.dart';
+
 class Routes extends StatelessWidget {
   final int index;
   const Routes({Key? key, required this.index}) : super(key: key);
@@ -14,10 +16,15 @@ class Routes extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> myList = [
       MyHomePage(),
-      const Page2(),
-      Page3( ),
-      const Page4(),
-      const Page5()
+      HomePage(
+        title: 'a',
+      ),
+      Page3(),
+      Page4(),
+      //pagina 5
+      HomePage(
+        title: 'a',
+      )
     ];
     return myList[index];
   }
