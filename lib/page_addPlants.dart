@@ -8,6 +8,7 @@ import 'package:plantamas/plants_list.dart';
 import 'package:plantamas/presenters/contacts_presenter.dart';
 import 'package:plantamas/views/base_view.dart';
 import 'views/base_view.dart';
+import 'package:plantamas/widget/custom_banner_ad.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -41,6 +42,7 @@ class _HomePageState extends State<HomePage> implements BaseView {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: horizontalTitleAlignment,
         children: const <Widget>[
+          const CustomBannerAd(),
           Text(
             'Plantas',
             style: TextStyle(

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:plantamas/data/database_helper.dart';
 import 'package:plantamas/models/plants.dart';
 import 'package:plantamas/views/base_view.dart';
+import 'package:plantamas/widget/custom_banner_ad.dart';
 
 class ContactsPresenter {
   late final BaseView _view;
@@ -30,6 +31,8 @@ class ContactsPresenter {
   delete(Contact contact) async {
     print(contact.id);
     await DatabaseHelper.internal().delete("plants", contact);
+    const CustomBannerAd();
+
     updateScreen();
   }
 

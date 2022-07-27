@@ -4,8 +4,14 @@ import 'package:plantamas/bottomNavigation/bottom_nav.dart';
 import 'package:plantamas/bottomNavigation/routes.dart';
 import 'package:plantamas/plantaMas/generatedHomeWidget/generatedHomeWidget.dart';
 import 'package:plantamas/home_page.dart';
+import 'package:plantamas/utilities/ad_helper.dart';
 
-void main() {
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
+  AdHelper.instance.configure(test: true);
   runApp(const MyApp());
 }
 

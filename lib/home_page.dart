@@ -5,6 +5,7 @@ import 'constants.dart';
 import 'weather.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:plantamas/widget/custom_banner_ad.dart';
 
 void main() {
   runApp(MyApp());
@@ -113,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
           height: size.height,
           child: Column(
             children: <Widget>[
+              const CustomBannerAd(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
