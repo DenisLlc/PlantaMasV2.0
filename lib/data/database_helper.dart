@@ -21,13 +21,25 @@ class DatabaseHelper {
 
   Future<Database> init() async {
     io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "main2.db");
+    String path = join(documentsDirectory.path, "main5.db");
     print(path);
+
     return openDatabase(path, version: 1, onCreate: onCreate);
   }
 
-  void onCreate(Database db, int version) async => await db.execute(
-      'CREATE TABLE plants (id INTEGER PRIMARY KEY NOT NULL, name STRING, age STRING, genre STRING, irrigation STRING, sun STRING, size STRING, temperature STRING)');
+  void onCreate(Database db, int version) async{
+    await db.execute(
+        'CREATE TABLE IF NOT EXISTS plants (id INTEGER PRIMARY KEY NOT NULL, name STRING, age STRING, genre STRING, irrigation STRING, sun STRING, size STRING, temperature STRING);');
+    /*await db.execute(
+        'CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY NOT NULL, name STRING, text STRING);');*/
+    await db.execute("""
+      CREATE TABLE IF NOT EXISTS notes (
+        id INTEGER PRIMARY KEY NOT NULL,
+        name STRING,
+        text STRING
+      );""");
+  }
+
 
   Future<List<Map<String, dynamic>>> query(String table) async =>
       (await db).query(table);

@@ -19,5 +19,6 @@ class AdHelper {
       return 'ca-app-pub-3940256099942544/6300978111';
     }
     return 'ca-app-pub-6475891850619146~5127338369';
+
   }
 }

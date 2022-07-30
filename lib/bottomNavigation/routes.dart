@@ -7,6 +7,7 @@ import 'package:plantamas/page4.dart';
 import 'package:plantamas/page5.dart';
 
 import 'package:plantamas/page_addPlants.dart';
+import 'package:plantamas/page_addNotes.dart';
 
 class Routes extends StatelessWidget {
   final int index;
@@ -22,7 +23,7 @@ class Routes extends StatelessWidget {
       Page3(),
       Page4(),
       //pagina 5
-      HomePage(
+      HomePageNotes(
         title: 'a',
       )
     ];
